@@ -2,7 +2,21 @@ FROM arm32v6/alpine
 
 RUN apk update
 RUN apk upgrade
-RUN apk add g++ sqlite-dev zlib-dev vim git tmux nodejs yarn npm asciinema
+RUN apk add \
+  asciinema \
+  curl \
+  g++ \
+  git \
+  nano \
+  nodejs \
+  npm \
+  ruby \
+  sqlite-dev \
+  tmux \
+  vim \
+  yarn \
+  zip \
+  zlib-dev \
 
 RUN git clone https://github.com/mapbox/tippecanoe
 RUN cd tippecanoe && make && make install && cd ..
