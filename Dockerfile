@@ -1,9 +1,9 @@
 FROM arm32v6/alpine
 
-apk update
-apk upgrade
-apk add g++ sqlite-dev zlib-dev vim git tmux nodejs yarn npm asciinema
+RUN apk update
+RUN apk upgrade
+RUN apk add g++ sqlite-dev zlib-dev vim git tmux nodejs yarn npm asciinema
 
-git clone https://github.com/mapbox/tippecanoe
-cd tippecanoe && make && make install && cd ..
+RUN git clone https://github.com/mapbox/tippecanoe
+RUN cd tippecanoe && make && make install && cd ..
 
