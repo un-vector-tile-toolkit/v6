@@ -17,7 +17,7 @@ RUN apk add \
   vim \
   yarn \
   zip \
-  zlib-dev \
+  zlib-dev
 
 RUN git clone https://github.com/mapbox/tippecanoe
 RUN cd tippecanoe && make && make install && cd ..
