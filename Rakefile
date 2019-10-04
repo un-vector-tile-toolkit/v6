@@ -1,3 +1,3 @@
 task :default do
-  sh "docker build -t v6 ."
+  sh "docker build -t unvt/v6 ."
 end
