@@ -7,6 +7,7 @@ RUN apk add \
   curl \
   g++ \
   git \
+  htop \
   nano \
   nodejs \
   npm \
