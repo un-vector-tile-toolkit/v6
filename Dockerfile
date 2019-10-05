@@ -4,10 +4,12 @@ RUN apk update
 RUN apk upgrade
 RUN apk add \
   asciinema \
+  bash \
   curl \
   g++ \
   git \
   htop \
+  make \
   nano \
   nodejs \
   npm \
