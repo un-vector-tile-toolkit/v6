@@ -5,17 +5,21 @@ RUN apk update
 RUN apk upgrade
 RUN apk add \
   asciinema \
+  autoconf \
+  automake \
   bash \
   curl \
   g++ \
   git \
   htop \
+  libtool \
   make \
   nano \
   nodejs \
   npm \
   python \
   ruby \
+  sqlite \
   sqlite-dev \
   tmux \
   vim \
@@ -24,7 +28,11 @@ RUN apk add \
   zlib-dev
 
 RUN git clone https://github.com/mapbox/tippecanoe &&\
-  cd tippecanoe && make && make install && cd .. && rm -rf tippecanoe
+  cd tippecanoe &&\
+  make &&\
+  make install &&\
+  cd .. &&\
+  rm -rf tippecanoe
 
 RUN yarn global add \
   browserify \
@@ -45,10 +53,20 @@ RUN git clone https://github.com/ibesora/vt-optimizer &&\
   npm install &&\
   cd ..
 
+RUN git clone https://github.com/OSGeo/PROJ &&\
+  cd PROJ &&\
+  ./autogen.sh &&\
+  ./configure &&\
+  make &&\
+  make install &&\
+  cd .. &&\
+  rm -rf PROJ
+
 RUN git clone https://github.com/OSGeo/gdal &&\
   cd gdal/gdal &&\
   ./configure &&\
   make &&\
   make install &&\
-  cd ../..
+  cd ../.. &&\
+  rm -rf gdal
 
