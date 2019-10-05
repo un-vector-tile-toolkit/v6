@@ -21,6 +21,21 @@ RUN apk add \
   zip \
   zlib-dev
 
-RUN git clone https://github.com/mapbox/tippecanoe
-RUN cd tippecanoe && make && make install && cd ..
+RUN git clone https://github.com/mapbox/tippecanoe &&\
+  cd tippecanoe && make && make install && cd ..
+
+RUN yarn global add \
+  browserify \
+  budo \
+  hjson \
+  pm2 \
+  rollup \
+  @mapbox/mapbox-gl-style-spec \
+  @pushcorn/hocon-parser
+
+RUN git clone https://github.com/maputnik/editor &&\
+  yarn
+
+RUN git clone https://github.com/ibesora/vt-optimizer &&\
+  yarn
 
