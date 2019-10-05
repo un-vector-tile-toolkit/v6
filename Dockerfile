@@ -1,5 +1,6 @@
 FROM arm32v6/alpine
 
+WORKDIR /root
 RUN apk update
 RUN apk upgrade
 RUN apk add \
@@ -13,6 +14,7 @@ RUN apk add \
   nano \
   nodejs \
   npm \
+  python \
   ruby \
   sqlite-dev \
   tmux \
@@ -22,7 +24,7 @@ RUN apk add \
   zlib-dev
 
 RUN git clone https://github.com/mapbox/tippecanoe &&\
-  cd tippecanoe && make && make install && cd ..
+  cd tippecanoe && make && make install && cd .. && rm -rf tippecanoe
 
 RUN yarn global add \
   browserify \
@@ -34,8 +36,19 @@ RUN yarn global add \
   @pushcorn/hocon-parser
 
 RUN git clone https://github.com/maputnik/editor &&\
-  yarn
+  cd editor &&\
+  npm install &&\
+  cd ..
 
 RUN git clone https://github.com/ibesora/vt-optimizer &&\
-  yarn
+  cd editor &&\
+  npm install &&\
+  cd ..
+
+RUN git clone https://github.com/OSGeo/gdal &&\
+  cd gdal/gdal &&\
+  ./configure &&\
+  make &&\
+  make install &&\
+  cd ../..
 
