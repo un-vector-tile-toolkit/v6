@@ -29,11 +29,7 @@ RUN apk update &&\
     zip \
     zlib-dev
 RUN git clone https://github.com/mapbox/tippecanoe &&\
-  git clone https://github.com/maputnik/editor &&\
-  git clone https://github.com/ibesora/vt-optimizer &&\
-  git clone https://github.com/OSGeo/PROJ &&\
-  git clone https://github.com/OSGeo/gdal
-RUN cd tippecanoe &&\
+  cd tippecanoe &&\
   make &&\
   make install &&\
   cd .. &&\
@@ -46,20 +42,24 @@ RUN yarn global add \
   rollup \
   @mapbox/mapbox-gl-style-spec \
   @pushcorn/hocon-parser
-RUN cd editor &&\
+RUN git clone https://github.com/maputnik/editor &&\
+  cd editor &&\
   npm install &&\
   cd ..
-RUN cd vt-optimizer &&\
+RUN git clone https://github.com/ibesora/vt-optimizer &&\
+  cd vt-optimizer &&\
   npm install &&\
   cd ..
-RUN cd PROJ &&\
+RUN git clone https://github.com/OSGeo/PROJ &&\
+  cd PROJ &&\
   ./autogen.sh &&\
   ./configure &&\
   make &&\
   make install &&\
   cd .. &&\
   rm -rf PROJ
-RUN cd gdal/gdal &&\
+RUN git clone https://github.com/OSGeo/gdal &&\
+  cd gdal/gdal &&\
   ./configure &&\
   make &&\
   make install &&\
