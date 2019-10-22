@@ -18,6 +18,7 @@ RUN apk update &&\
     nano \
     nodejs \
     npm \
+    openssh \
     python \
     ruby \
     ruby-rake \
